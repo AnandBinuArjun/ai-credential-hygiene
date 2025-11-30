@@ -69,28 +69,6 @@ graph LR
     B -->|Browsers| C[Raw Findings]
     B -->|Filesystem| C
     B -->|Git| C
-    C --> D[Normalization]
-    D --> E[Detection Layer]
-    E --> F[Strength & Reuse]
-    E --> G[Risk Scoring]
-    G --> H[AI Classification]
-    H --> I[Encrypted DB]
-    I --> J[Cloud Sync (Metadata Only)]
-```
-
-**2. Security Model**
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Agent as Desktop Agent
-    participant DB as Local DB (Encrypted)
-    participant Cloud as Cloud API
-    
-    User->>Agent: Start Scan
-    Agent->>Agent: Collect Secrets (Memory Only)
-    Agent->>Agent: Analyze & Score
-    Agent->>DB: Encrypt & Store (AES-GCM)
     Agent->>Cloud: Sync Metadata (Hash + Score)
     Note right of Agent: Raw secrets are discarded<br/>from memory immediately.
 ```
