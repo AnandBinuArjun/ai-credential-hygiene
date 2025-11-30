@@ -51,31 +51,6 @@ The system consists of three main components:
 
 1. **Desktop Agent (The Core)**:
     * **Backend**: Python (FastAPI) service that runs collectors and analysis.
-    * **Frontend**: React + Tauri application for the user interface.
-    * **Storage**: Encrypted local SQLite database.
-2. **Cloud Backend**:
-    * **API**: FastAPI service for aggregation.
-    * **DB**: PostgreSQL for storing fleet data.
-3. **Mobile App**:
-    * **Frontend**: React Native (Expo) app connecting to the Cloud API.
-
-### 📊 Flowcharts
-
-**1. Scanning Pipeline**
-
-```mermaid
-graph LR
-    A[Start Scan] --> B{Collectors}
-    B -->|Browsers| C[Raw Findings]
-    B -->|Filesystem| C
-    B -->|Git| C
-    Agent->>Cloud: Sync Metadata (Hash + Score)
-    Note right of Agent: Raw secrets are discarded<br/>from memory immediately.
-```
-
----
-
-## 📂 Directory Structure
 
 ```
 ai-credential-hygiene/
